@@ -6,6 +6,7 @@ import lombok.SneakyThrows;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -15,7 +16,7 @@ import java.util.Locale;
 @Getter
 @Setter
 @ToString()
-public class Client  {
+public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "client_id", unique = true, nullable = false)
