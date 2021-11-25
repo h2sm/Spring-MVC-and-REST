@@ -18,19 +18,12 @@ import java.util.Locale;
 @Setter
 @ToString()
 public class Client implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "client_id", unique = true, nullable = false)
-    private int id;
-    @Column(name = "full_name")
-    private String fullName;
-    @Column(name = "passport")
-    private String passport;
-    @Column(name = "tel_name")
-    private String phoneNumber;
-    @Column(name = "date_of_birth")
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private Date dateOfBirth;
+
+    private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "client_id", unique = true, nullable = false) int id;
+    private @Column(name = "full_name") String fullName;
+    private @Column(name = "passport") String passport;
+    private @Column(name = "tel_name") String phoneNumber;
+    private @Column(name = "date_of_birth") @DateTimeFormat(pattern = "dd-MM-yyyy") Date dateOfBirth;
 
     public Client(String fullName, String passport, String phoneNumber, String dateOfBirth) {
         this.fullName=fullName;
