@@ -46,7 +46,7 @@ public class ClientService implements BaseService<Client> {
 
     @Override
     @Transactional
-    public void delete(Client entity) {
-        if (repo.existsById(entity.getId())) repo.delete(entity);
+    public void delete(int id) {
+        if (repo.existsById(id)) repo.delete(showByID(id));
     }
 }

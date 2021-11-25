@@ -8,5 +8,5 @@ public interface BaseService <T>{
     T findByNamepart(String namepart);
     void insert(T entity);
     void modify(T entity);
-    void delete(T entity);
+    void delete(int id);
 }
