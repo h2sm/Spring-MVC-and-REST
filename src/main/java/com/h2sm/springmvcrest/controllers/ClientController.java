@@ -35,11 +35,11 @@ public class ClientController {
     @PostMapping( "/delete/{id}")
     public String deleteClient(@PathVariable("id") int id){
         service.delete(id);
-        return "deleted";
+        return "client with id " + id + " was deleted";
     }
-    @PostMapping( "/modify/{id}")
-    public Client modifyClient(@PathVariable("id") int id){
-        service.modify(service.showByID(id));
-        return service.showByID(id);
+    @PostMapping( "/modify/{id}")//POST http://localhost:8080/modify/2?fullName=testClient2&passport=0123%666666&phoneNumber=911&dateOfBirth=14-05-2010
+    public Client modifyClient(@PathVariable("id") int id, Client client){
+        service.modify(client);
+        return client;
     }
 }
