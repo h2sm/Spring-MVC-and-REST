@@ -28,8 +28,8 @@ public class ClientService implements BaseService<Client> {
 
     @Override
     @Transactional
-    public Client findByNamepart(String namepart) {
-        return null;
+    public List<Client> findByNamepart(String namepart) {
+        return repo.findClientByFullNameContaining(namepart);
     }
 
     @Override

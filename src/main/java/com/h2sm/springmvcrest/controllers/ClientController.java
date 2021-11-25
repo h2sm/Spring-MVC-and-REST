@@ -23,7 +23,7 @@ public class ClientController {
     }
 
     @GetMapping("/find-namepart/{namepart}")
-    public Client findByNamePart(@PathVariable String namepart){
+    public List<Client> findByNamePart(@PathVariable String namepart){
         return service.findByNamepart(namepart);
     }
 
