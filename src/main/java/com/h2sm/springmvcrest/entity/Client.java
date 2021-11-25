@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,13 +29,14 @@ public class Client implements Serializable {
     @Column(name = "tel_name")
     private String phoneNumber;
     @Column(name = "date_of_birth")
-    private Date date_of_birth;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private Date dateOfBirth;
 
     public Client(String fullName, String passport, String phoneNumber, String dateOfBirth) {
         this.fullName=fullName;
         this.passport=passport;
         this.phoneNumber=phoneNumber;
-        this.date_of_birth=convert(dateOfBirth);
+        this.dateOfBirth=convert(dateOfBirth);
     }
 
     public Client() {
@@ -48,6 +50,6 @@ public class Client implements Serializable {
     }
 
     public void setDate(String date){
-        this.date_of_birth = convert(date);
+        this.dateOfBirth = convert(date);
     }
 }

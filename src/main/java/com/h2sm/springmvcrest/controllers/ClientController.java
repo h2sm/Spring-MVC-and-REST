@@ -12,8 +12,8 @@ import java.util.List;
 public class ClientController {
     private final ClientService service;
 
-    @GetMapping("/find/{id:\\d+}")
-    public Client findById(@PathVariable int id) {
+    @GetMapping("/find/{id}")
+    public Client findById(@PathVariable("id") int id) {
         return service.showByID(id);
     }
 
@@ -22,25 +22,20 @@ public class ClientController {
         return service.showAllEntities();
     }
 
-    @RequestMapping( "/add-cli")// test req - /add-cli?name=hello&passport=0101%20222111&phone=01&date=01-02-1992
-    public String addClient(@RequestParam("name") String name,
-                            @RequestParam("passport") String pass,
-                            @RequestParam("phone") String phone,
-                            @RequestParam("date") String date) {
-        service.insert(new Client(name,pass,phone, date));
-        return "added";
+    @PostMapping( "/add-cli")// test req - /add-cli?fullName=hello&passport=0101%20222111&phoneNumber=01&date_of_bith=01-02-1992
+    public Client addClient(Client client) {
+        service.insert(client);
+        return client;
     }
-    @PostMapping(value = "/delete/{id:\\d+}")
-    public String deleteClient(@RequestParam("id") int id){
+    @PostMapping( "/delete/{id}")
+    public String deleteClient(@PathVariable("id") int id){
         service.delete(id);
         return "deleted";
     }
-    @PostMapping(value = "modify/{id:\\d+}")
-    public Client modifyClient(int id){
+    @PostMapping( "/modify/{id}")
+    public Client modifyClient(@PathVariable("id") int id){
         service.modify(service.showByID(id));
         return service.showByID(id);
     }
-
-
 
 }
