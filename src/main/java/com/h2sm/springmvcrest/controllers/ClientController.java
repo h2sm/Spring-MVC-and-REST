@@ -22,6 +22,11 @@ public class ClientController {
         return service.showAllEntities();
     }
 
+    @GetMapping("/find-namepart/{namepart}")
+    public Client findByNamePart(@PathVariable String namepart){
+        return service.findByNamepart(namepart);
+    }
+
     @PostMapping( "/add-cli")// test req - /add-cli?fullName=hello&passport=0101%20222111&phoneNumber=01&date_of_bith=01-02-1992
     public Client addClient(Client client) {
         service.insert(client);
@@ -37,5 +42,4 @@ public class ClientController {
         service.modify(service.showByID(id));
         return service.showByID(id);
     }
-
 }

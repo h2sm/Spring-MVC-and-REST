@@ -3,6 +3,7 @@ package com.h2sm.springmvcrest.services;
 import com.h2sm.springmvcrest.entity.Client;
 import com.h2sm.springmvcrest.repositories.ClientRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityNotFoundException;
@@ -48,5 +49,6 @@ public class ClientService implements BaseService<Client> {
     @Transactional
     public void delete(int id) {
         if (repo.existsById(id)) repo.delete(showByID(id));
+        else throw new EntityNotFoundException();
     }
 }
